@@ -23,9 +23,59 @@
 #app {
     width: 1250px;
     height: 95vh;
-    background-color: red;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.col-left {
+    width: 400px;
+    float: left;
+}
+
+.col-right {
+    width: calc(100% - 400px);
+    height: 100%;
+    float: left;
+}
+
+.col-left_top {
+    height: 20vh;
+}
+
+.user {
+    height: 55px;
+    background-color: #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.notifications {
+    height: 55px;
+    background-color: #8edafc;
+}
+
+.search-name {
+    height: calc(100% - 110px);
+    background-color: #fafafa;
+}
+
+.col-left_bottom {
+    height: 75vh;
+    background-color: red;
+    overflow-y: scroll;
+}
+
+.col-right_top,
+.col-right_bottom {
+    height: 55px;
+    background-color: #eaeaea;
+    border-left: 1px solid lightgray;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.col-right_main {
+    height: calc(100% - 110px);
+    background-image: url(../img/mine.jpg);
+    overflow-y: scroll;
 }
