@@ -53,26 +53,20 @@
                     <div class="search-name">
                         <div class="input_search">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" id="search_name" placeholder="Cerca o inizia una nuova chat">
+                            <input type="text" name="search_name" id="search_name" placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </div>
                 </div>
 
                 <div class="col-left_bottom">
-
                     <div class="received-msg">
-                    
                         <div class="circle"><img class="img_users" src="img/avatar_1.jpg" alt=""></div>
                         <div class="received-msg_text">
                             <div class="name">Michele</div>
                             <div class="info-text">Ultimo messaggio inviato</div>
                         </div>
-                        <div class="hour-text">12.00</div>
-                    
-
+                        <div class="hour-text">12:00</div>
                     </div>
-                    
-                
                 </div>
 
             </div>
@@ -80,18 +74,35 @@
             <!-- colonna di destra con la schermata dei messaggi -->
             <div class="col-right">
                 <div class="col-right_top">
-
+                    <div class="circle-main circle_main_top"><img class="img_users" src="img/avatar_1.jpg" alt=""></div>
+                    <div class="received-msg_text">
+                        <div class="name">Michele</div>
+                        <div class="info-text">Ultimo accesso oggi alle 12:00</div>
+                    </div>
+                    <div class="tools">
+                        <button class="btn-tools"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button class="btn-tools"><i class="fa-solid fa-paperclip"></i></button>
+                        <button class="btn-tools"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    </div>
                 </div>
 
-                <div class="col-right_main"></div>
+                <div class="col-right_main">
+                    <div class="msg-box">
+                        <div class="msg-send"><span class="content-msg">Hai portato a spasso il cane?</span><div class="hour-text msg-hour">15.30</div></div>
+                        <div class="msg-send"><span class="content-msg">Ricordati di stendere i panni</span><div class="hour-text msg-hour">15.50</div></div>  
+                        <div class="msg-received"><span class="content-msg">Tutto fatto!</span><div class="hour-text msg-hour">16.15</div></div>
+                    </div>
+                </div>
 
-                <div class="col-right_bottom"></div>
+                <div class="col-right_bottom">
+                    <i class="fa-solid fa-face-smile"></i>
+                    <input type="text" name="write-msg" id="write-msg" placeholder="Scrivi un messaggio">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
             </div>
-
         </div>
     </div>
     
-
     <!-- link vue js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- link js -->
