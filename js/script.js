@@ -1,10 +1,3 @@
-// Milestone 2
-// ● Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, 
-// visualizzare tutti i
-// messaggi relativi al contatto attivo all’interno del pannello della 
-// conversazione
-
-
 const app = new Vue ({
     el: '#app',
     data: {
@@ -54,7 +47,6 @@ const app = new Vue ({
                         status: 'received',
                     },
                 ],
-
             },
             {
                 name: 'Samuele',
@@ -62,7 +54,23 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Dove sei?',
+                        status: 'received',
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'OH!!',
+                        status: 'received',
+                    },
+                    {
+                        date: '10/01/2020 16:15:22',
+                        message: 'ischida!!',
+                        status: 'received',
+                    },
+                ],
             },
             {
                 name: 'Alessandro B.',
@@ -70,7 +78,7 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-
+                
             },
             {
                 name: 'Alessandro L.',
@@ -78,7 +86,7 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-
+                
             },
             {
                 name: 'Claudia',
@@ -86,7 +94,7 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-
+                
             },
             {
                 name: 'Federico',
@@ -94,7 +102,7 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-
+                
             },
             {
                 name: 'Davide',
@@ -102,17 +110,19 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-
             },
         ],
         
     },
     methods: {
-       getUser() {
-           return this.usersList[this.activeIndex];
-        },  
+        getUser() {
+            return this.usersList[this.activeIndex];
+        },
+        getTime(data){
+            let date = new Date(data.date);
+            let itaDate;
+            return itaDate = date.toLocaleString("it-IT", {timeStyle: 'short'});
+        },
     },
-   
+    
 })
-
-

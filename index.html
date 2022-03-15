@@ -88,7 +88,7 @@
 
                 <div class="col-right_main">
                     <div class="msg-box">
-                        <div v-for="message in getUser().messages" :class="message.status == 'sent' ? 'msg-send' : 'msg-received'">{{ message.message }}<div class="hour-text msg-hour">{{ message.date }}</div></div>
+                        <div v-for="message in getUser().messages" :class="message.status == 'sent' ? 'msg-send content-msg' : 'msg-received content-msg'">{{ message.message }}<div class="msg-hour">{{ getTime(message) }}</div></div>
                     </div>
                 </div>
 

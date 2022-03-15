@@ -247,11 +247,13 @@ body {
 }
 
 .content-msg {
-    font-size: .8rem;
+    font-size: .9rem;
     font-weight: lighter;
 }
 
 .msg-hour {
+    font-size: .6rem;
+    color: gray;
     position: absolute;
     bottom: 0;
     right: 0;
