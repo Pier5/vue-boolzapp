@@ -59,16 +59,16 @@
                 </div>
 
                 <div class="col-left_bottom">
-                    <div class="received-msg">
-                        <div class="circle"><img class="img_users" src="img/avatar_1.jpg" alt=""></div>
+                    <div v-for="users in usersList" class="received-msg">
+                        <div class="circle"><img class="img_users" :src="'img/' + users.img" alt=""></div>
                         <div class="received-msg_text">
-                            <div class="name">Michele</div>
-                            <div class="info-text">Ultimo messaggio inviato</div>
+                            <div class="name">{{ users.name }}</div>
+                            <div class="info-text">{{ users.text }}</div>
                         </div>
-                        <div class="hour-text">12:00</div>
+                        <div class="hour-text">{{ users.time }}</div>
                     </div>
                 </div>
-
+                
             </div>
 
             <!-- colonna di destra con la schermata dei messaggi -->
@@ -95,9 +95,9 @@
                 </div>
 
                 <div class="col-right_bottom">
-                    <i class="fa-solid fa-face-smile"></i>
+                    <button class="btn-tools"><i class="fa-solid fa-face-smile"></i></button>
                     <input type="text" name="write-msg" id="write-msg" placeholder="Scrivi un messaggio">
-                    <i class="fa-solid fa-microphone"></i>
+                    <button class="btn-tools"><i class="fa-solid fa-microphone"></i></button>
                 </div>
             </div>
         </div>
