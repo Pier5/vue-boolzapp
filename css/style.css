@@ -41,7 +41,7 @@
 }
 
 .col-left_top {
-    height: 20vh;
+    height: 150px;
 }
 
 .user {
@@ -62,8 +62,27 @@
 
 .col-left_bottom {
     height: 75vh;
-    background-color: red;
     overflow-y: scroll;
+}
+
+.received-msg {
+    height: 3.75rem;
+    background-color: white;
+    border-top: 1px solid lightgray;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+
+.img_users {
+    width: 100%;
+    object-fit: fill;
+    border-radius: 50%;
+
 }
 
 .col-right_top,
