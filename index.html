@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="col-left_bottom">
-                    <div v-for="users in usersList" class="received-msg">
+                    <div v-for="(users, index) in usersList"  @click="activeIndex = index" class="received-msg">
                         <div class="circle"><img class="img_users" :src="'img/' + users.img" alt=""></div>
                         <div class="received-msg_text">
                             <div class="name">{{ users.name }}</div>
@@ -74,10 +74,10 @@
             <!-- colonna di destra con la schermata dei messaggi -->
             <div class="col-right">
                 <div class="col-right_top">
-                    <div class="circle-main circle_main_top"><img class="img_users" src="img/avatar_1.jpg" alt=""></div>
+                    <div class="circle-main circle_main_top"><img class="img_users" :src="'img/' + usersList[activeIndex].img" alt=""></div>
                     <div class="received-msg_text">
-                        <div class="name">Michele</div>
-                        <div class="info-text">Ultimo accesso oggi alle 12:00</div>
+                        <div class="name">{{ usersList[activeIndex].name }}</div>
+                        <div class="info-text">{{ `${usersList[activeIndex].access} ${usersList[activeIndex].time}` }}</div>
                     </div>
                     <div class="tools">
                         <button class="btn-tools"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -88,9 +88,7 @@
 
                 <div class="col-right_main">
                     <div class="msg-box">
-                        <div class="msg-send"><span class="content-msg">Hai portato a spasso il cane?</span><div class="hour-text msg-hour">15.30</div></div>
-                        <div class="msg-send"><span class="content-msg">Ricordati di stendere i panni</span><div class="hour-text msg-hour">15.50</div></div>  
-                        <div class="msg-received"><span class="content-msg">Tutto fatto!</span><div class="hour-text msg-hour">16.15</div></div>
+                        <div v-for="message in getUser().messages" :class="message.status == 'sent' ? 'msg-send' : 'msg-received'">{{ message.message }}<div class="hour-text msg-hour">{{ message.date }}</div></div>
                     </div>
                 </div>
 
