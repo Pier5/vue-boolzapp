@@ -300,3 +300,7 @@ body {
     display: block;
 }
 
+.item-menu:hover {
+    background-color: #eaeaea;
+}
+

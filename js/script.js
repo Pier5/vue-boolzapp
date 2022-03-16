@@ -205,7 +205,10 @@ const app = new Vue ({
             return this.usersList.filter(user => {
               return user.name.toLowerCase().includes(this.searchName.toLowerCase())
             })
-          }
+        },
+        deleteMessage(index) {
+            this.usersList[this.activeIndex].messages.splice(index, 1);
+        },
     },  
         
 })

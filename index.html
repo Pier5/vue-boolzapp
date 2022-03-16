@@ -88,15 +88,16 @@
                 
                 <div class="col-right_main">
                     
-                    <div v-for="message in getUser().messages" :class="message.status == 'sent' ? 'msg-send content-msg' : 'msg-received content-msg'" class="msg-box" >{{ message.message }}
+                    <div v-for="(message, index) in getUser().messages" :class="message.status == 'sent' ? 'msg-send content-msg' : 'msg-received content-msg'" class="msg-box" >{{ message.message }}
                         <div class="msg-hour">{{ getTime(message) }}</div>
                         <div class="dropdown-menu">
                             <button class="btn-menu"><i class="fa-solid fa-chevron-down"></i>
                                 <div class="dropdown-items">
                                     <a class="item-menu" href="#"><span class="menu-text">Info messaggio</span></a>
-                                    <a class="item-menu" href="#"><span class="menu-text">Cancella messaggio</span></a>
-                                </div></button>
-                            </div>
+                                    <a @click="deleteMessage(index)" class="item-menu" href="#"><span class="menu-text">Cancella messaggio</span></a>
+                                </div>
+                            </button>
+                        </div>
                         </div>
                     </div>
                     
@@ -105,7 +106,7 @@
                         <input @keyup.enter="sendMessage" v-model="newMessage" type="text" name="write-msg" id="write-msg" placeholder="Scrivi un messaggio">
                         <button class="btn-tools"><i class="fa-solid fa-microphone"></i></button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
