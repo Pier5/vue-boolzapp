@@ -259,3 +259,44 @@ body {
     right: 0;
     padding: .3rem;
 }
+
+.btn-menu {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: .6rem;
+    padding: .3rem;
+}
+
+
+.dropdown-menu{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.dropdown-items {
+    position: absolute;
+    display: none;
+    right: 0;
+}
+
+.menu-text {
+    color: black;
+}
+
+.item-menu {
+    display: block;
+    width: 150px;
+    height: 30px;
+    background-color: lightgrey;
+    text-decoration: none;
+    border: 1px solid gray;
+    text-align: center;
+    padding-top: .5rem;  
+}
+
+.btn-menu:hover .dropdown-items {
+    display: block;
+}
+
