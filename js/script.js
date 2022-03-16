@@ -183,13 +183,11 @@ const app = new Vue ({
             let date = new Date(data.date);
             return date.toLocaleString("it-IT", {timeStyle: 'short'});
         },
-        sendMessage(userMessage) {
+        sendMessage() {
             if(this.newMessage.trim() != '') {
-                let newDate = new Date().toLocaleString("en-US"); 
-
-                userMessage.messages.push({
+                this.usersList[this.activeIndex].messages.push({
+                    date: new Date().toLocaleString("en-EN"),
                     message: this.newMessage, 
-                    date: newDate, 
                     status: 'sent'
                 });
                 this.newMessage = '';
