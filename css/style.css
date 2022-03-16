@@ -220,7 +220,7 @@ body {
 }
 
 .col-right_main {
-    height: calc(100% - 110px);
+    height: calc(100% - 108px);
     background-image: url(../img/mine.jpg);
     overflow-y: scroll;
 }
@@ -298,7 +298,7 @@ body {
     padding-top: .5rem;  
 }
 
-.btn-menu:hover .dropdown-items {
+.btn-menu:focus-within .dropdown-items {
     display: block;
 }
 

@@ -59,13 +59,13 @@
                 </div>
                 
                 <div class="col-left_bottom">
-                    <div v-for="(users, index) in filteredList()"  @click="activeIndex = index" class="received-msg">
+                    <div v-for="(users, index) in filterList().slice().reverse()"  @click="activeIndex = index" class="received-msg">
                         <div class="circle"><img class="img_users" :src="'img/' + users.img" alt=""></div>
                         <div class="received-msg_text">
                             <div class="name">{{ users.name }}</div>
-                            <div class="info-text">{{ users.text }}</div>
+                            <div class="info-text">{{ getLastMsg(index)[0].message }}</div>
                         </div>
-                        <div class="hour-text">{{ users.time }}</div>
+                        <div class="hour-text">{{ getLastMsg(index)[0].date }}</div>
                     </div>
                 </div>
                 

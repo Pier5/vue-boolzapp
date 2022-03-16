@@ -1,6 +1,3 @@
-// Visualizzazione ora e ultimo messaggio inviato/ricevuto nella 
-// lista dei contatti
-
 const app = new Vue ({
     el: '#app',
     data: {
@@ -12,7 +9,6 @@ const app = new Vue ({
             {
                 name: 'Michele',
                 img: 'avatar_1.jpg',
-                text: 'Ultimo messaggio inviato',
                 access: 'Ultimo accesso oggi alle',
                 time: '12:00',
                 visible: true,
@@ -37,7 +33,6 @@ const app = new Vue ({
             {
                 name: 'Fabio',
                 img: 'avatar_2.jpg',
-                text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
@@ -56,7 +51,6 @@ const app = new Vue ({
             {
                 name: 'Samuele',
                 img: 'avatar_3.jpg',
-                text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
@@ -80,7 +74,6 @@ const app = new Vue ({
             {
                 name: 'Alessandro B.',
                 img: 'avatar_4.jpg',
-                text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
@@ -94,7 +87,6 @@ const app = new Vue ({
             {
                 name: 'Alessandro L.',
                 img: 'avatar_5.jpg',
-                text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
@@ -113,12 +105,11 @@ const app = new Vue ({
             {
                 name: 'Claudia',
                 img: 'avatar_6.jpg',
-                text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
                     {
-                        date: '10/01/2020 11:30:55',
+                        date: '9/01/2020 11:30:55',
                         message: 'Per oggi non ce la faccio',
                         status: 'sent',
                     },
@@ -132,7 +123,6 @@ const app = new Vue ({
             {
                 name: 'Federico',
                 img: 'avatar_7.jpg',
-                text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
@@ -147,22 +137,8 @@ const app = new Vue ({
                         status: 'sent',
                     },
                     {
-                        date: '10/01/2020 22:15:22',
+                        date: '11/01/2020 22:15:22',
                         message: 'Aioooooooo',
-                        status: 'received',
-                    },
-                ],
-            },
-            {
-                name: 'Davide',
-                img: 'avatar_8.jpg',
-                text: 'Ultimo messaggio inviato',
-                time: '12:00',
-                access: 'Ultimo accesso oggi alle',
-                messages: [
-                    {
-                        date: '10/01/2020 12:10:22',
-                        message: 'Biglietti per Parigi a 20 euro!!!',
                         status: 'received',
                     },
                 ],
@@ -197,14 +173,17 @@ const app = new Vue ({
                 status: status,
             });
         },
-        filteredList() {
+        filterList() {
             return this.usersList.filter(user => {
-              return user.name.toLowerCase().includes(this.searchName.toLowerCase())
+                return user.name.toLowerCase().includes(this.searchName.toLowerCase())
             })
         },
         deleteMessage(index) {
             this.usersList[this.activeIndex].messages.splice(index, 1);
         },
-    },  
-        
+        getLastMsg(index) {          
+            return this.usersList[index].messages.slice().reverse();  
+        } 
+    }, 
+    
 })
