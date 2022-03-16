@@ -1,7 +1,17 @@
+// Milestone 3
+// Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando 
+// “enter” il testo viene aggiunto al thread sopra, come messaggio verde
+// Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà 
+// un “ok” come risposta, che apparirà dopo 1 secondo.
+
+
+
+
 const app = new Vue ({
     el: '#app',
     data: {
         
+        newMessage: '',
         activeIndex: 0,
         usersList: [
             {
@@ -37,12 +47,12 @@ const app = new Vue ({
                 access: 'Ultimo accesso oggi alle',
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        date: '10/01/2020 13:41:09',
                         message: 'Ciao come va?',
                         status: 'sent',
                     },
                     {
-                        date: '10/01/2020 16:15:22',
+                        date: '10/01/2020 14:22:10',
                         message: 'Tutto bene!',
                         status: 'received',
                     },
@@ -56,17 +66,17 @@ const app = new Vue ({
                 access: 'Ultimo accesso oggi alle',
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        date: '10/01/2020 08:12:55',
                         message: 'Dove sei?',
                         status: 'received',
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        date: '10/01/2020 12:50:00',
                         message: 'OH!!',
                         status: 'received',
                     },
                     {
-                        date: '10/01/2020 16:15:22',
+                        date: '10/01/2020 18:12:11',
                         message: 'ischida!!',
                         status: 'received',
                     },
@@ -78,7 +88,13 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-                
+                messages: [
+                    {
+                        date: '10/01/2020 10:00:21',
+                        message: 'Calcetto alle 22?',
+                        status: 'sent',
+                    },
+                ], 
             },
             {
                 name: 'Alessandro L.',
@@ -86,7 +102,18 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-                
+                messages: [
+                    {
+                        date: '10/01/2020 11:30:55',
+                        message: 'Hai sentito Anto?',
+                        status: 'received',
+                    },
+                    {
+                        date: '10/01/2020 12:50:00',
+                        message: 'chiamalo!!',
+                        status: 'received',
+                    },
+                ],
             },
             {
                 name: 'Claudia',
@@ -94,7 +121,18 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-                
+                messages: [
+                    {
+                        date: '10/01/2020 11:30:55',
+                        message: 'Per oggi non ce la faccio',
+                        status: 'sent',
+                    },
+                    {
+                        date: '10/01/2020 12:50:00',
+                        message: 'Domani come sei messa?',
+                        status: 'sent',
+                    },
+                ],
             },
             {
                 name: 'Federico',
@@ -102,7 +140,23 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
-                
+                messages: [
+                    {
+                        date: '10/01/2020 21:30:55',
+                        message: 'Hai ordinato la pizza?',
+                        status: 'received',
+                    },
+                    {
+                        date: '10/01/2020 21:50:00',
+                        message: 'Ancora no..',
+                        status: 'sent',
+                    },
+                    {
+                        date: '10/01/2020 22:15:22',
+                        message: 'Aioooooooo',
+                        status: 'received',
+                    },
+                ],
             },
             {
                 name: 'Davide',
@@ -110,6 +164,13 @@ const app = new Vue ({
                 text: 'Ultimo messaggio inviato',
                 time: '12:00',
                 access: 'Ultimo accesso oggi alle',
+                messages: [
+                    {
+                        date: '10/01/2020 12:10:22',
+                        message: 'Biglietti per Parigi a 20 euro!!!',
+                        status: 'received',
+                    },
+                ],
             },
         ],
         
@@ -120,8 +181,13 @@ const app = new Vue ({
         },
         getTime(data){
             let date = new Date(data.date);
-            let itaDate;
-            return itaDate = date.toLocaleString("it-IT", {timeStyle: 'short'});
+            return date.toLocaleString("it-IT", {timeStyle: 'short'});
+        },
+        sendMessage(userMsg) {
+            if(this.newMessage.trim() != '') {
+                userMsg.messages.push({message: this.newMessage, status: 'sent'});
+                this.newMessage = '';
+            }
         },
     },
     

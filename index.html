@@ -93,8 +93,8 @@
                 </div>
 
                 <div class="col-right_bottom">
-                    <button class="btn-tools"><i class="fa-solid fa-face-smile"></i></button>
-                    <input type="text" name="write-msg" id="write-msg" placeholder="Scrivi un messaggio">
+                    <button class="btn-tools"><i class="fa-regular fa-face-smile"></i></button>
+                    <input @keyup.enter="sendMessage" v-model="newMessage" type="text" name="write-msg" id="write-msg" placeholder="Scrivi un messaggio">
                     <button class="btn-tools"><i class="fa-solid fa-microphone"></i></button>
                 </div>
             </div>
