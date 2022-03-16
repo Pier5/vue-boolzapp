@@ -14,6 +14,7 @@ body {
 
 .jumbo-container {
     position: relative;
+    overflow: hidden;
 }
 
 .jumbo-top {
@@ -264,6 +265,7 @@ body {
     cursor: pointer;
     border: none;
     background-color: transparent;
+    visibility: hidden;
     font-size: .6rem;
     padding: .3rem;
 }
@@ -304,3 +306,6 @@ body {
     background-color: #eaeaea;
 }
 
+.msg-box:hover .btn-menu{
+    visibility: visible;
+}
