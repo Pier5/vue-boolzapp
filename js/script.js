@@ -2,7 +2,7 @@ const app = new Vue ({
     el: '#app',
     data: {
         
-        lastSeen: '',
+        searchName: '',
         newMessage: '',
         activeIndex: 0,
         usersList: [
@@ -193,7 +193,12 @@ const app = new Vue ({
                 message: message, 
                 status: status,
             });
-        }
+        },
+        filteredList() {
+            return this.usersList.filter(user => {
+              return user.name.toLowerCase().includes(this.searchName.toLowerCase())
+            })
+          }
     },  
         
 })

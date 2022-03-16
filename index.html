@@ -53,13 +53,13 @@
                     <div class="search-name">
                         <div class="input_search">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" name="search_name" id="search_name" placeholder="Cerca o inizia una nuova chat">
+                            <input v-model="searchName" type="text" name="search_name" id="search_name" placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </div>
                 </div>
 
                 <div class="col-left_bottom">
-                    <div v-for="(users, index) in usersList"  @click="activeIndex = index" class="received-msg">
+                    <div v-for="(users, index) in filteredList()"  @click="activeIndex = index" class="received-msg">
                         <div class="circle"><img class="img_users" :src="'img/' + users.img" alt=""></div>
                         <div class="received-msg_text">
                             <div class="name">{{ users.name }}</div>
