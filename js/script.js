@@ -177,23 +177,22 @@ const app = new Vue ({
         },
         sendMessage() {
             if(this.newMessage.trim() != '') {
-                this.usersList[this.activeIndex].messages.push({
-                    date: new Date().toLocaleString("en-EN"),
-                    message: this.newMessage, 
-                    status: 'sent',
-                });
+                this.buildMessage(this.newMessage, 'sent');
                 this.newMessage = '';
                 this.messageAnswer();
             }
         },
         messageAnswer(){
             setTimeout( () => {
-                this.usersList[this.activeIndex].messages.push({
-                    date: new Date().toLocaleString("en-EN"),
-                    message: 'ok!', 
-                    status: 'received',
-                });
+                this.buildMessage('ok!!', 'received');
             }, 1000)
+        },
+        buildMessage(message, status) {
+            this.usersList[this.activeIndex].messages.push({
+                date: new Date().toLocaleString("en-EN"),
+                message: message, 
+                status: status,
+            });
         }
     },  
         
