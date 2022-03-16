@@ -1,16 +1,8 @@
-// Milestone 3
-// Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando 
-// “enter” il testo viene aggiunto al thread sopra, come messaggio verde
-// Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà 
-// un “ok” come risposta, che apparirà dopo 1 secondo.
-
-
-
-
 const app = new Vue ({
     el: '#app',
     data: {
         
+        lastSeen: '',
         newMessage: '',
         activeIndex: 0,
         usersList: [
@@ -188,11 +180,21 @@ const app = new Vue ({
                 this.usersList[this.activeIndex].messages.push({
                     date: new Date().toLocaleString("en-EN"),
                     message: this.newMessage, 
-                    status: 'sent'
+                    status: 'sent',
                 });
                 this.newMessage = '';
+                this.messageAnswer();
             }
         },
-    },
-    
+        messageAnswer(){
+            setTimeout( () => {
+                this.usersList[this.activeIndex].messages.push({
+                    date: new Date().toLocaleString("en-EN"),
+                    message: 'ok!', 
+                    status: 'received',
+                });
+            }, 1000)
+        }
+    },  
+        
 })
