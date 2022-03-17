@@ -148,7 +148,7 @@ const app = new Vue ({
                 ],
             },
         ],
-        randomQuotes: [
+        randomAnswers: [
             'Non posso',
             'Ho il covid!!',
             'Stasera alle 22',
@@ -158,7 +158,7 @@ const app = new Vue ({
             'Sai che questa non è una gara di 10 secondi. “Non ho altro che tempo.',
             'Non giri le spalle alla famiglia, anche quando sono loro a farlo.',
             'Vivo la mia vita un quarto di miglio alla volta.',
-        ],
+        ]
         
     },
     methods: {
@@ -171,24 +171,23 @@ const app = new Vue ({
         },
         sendMessage() {
             if(this.newMessage.trim() != '') {
-                this.usersList[this.activeIndex].messages.push({
-                    date: new Date().toLocaleString("en-EN"),
-                    message: this.newMessage, 
-                    status: 'sent',
-                });
+                this.buildMessage(this.newMessage, 'sent');
                 this.newMessage = '';
                 this.messageAnswer();
             }
         },
         messageAnswer(){
             setTimeout( () => {
-                let randomAnswer = Math.floor(Math.random() * this.randomQuotes.length);
-                this.usersList[this.activeIndex].messages.push({
-                    date: new Date().toLocaleString("en-EN"),
-                    message: this.randomQuotes[randomAnswer], 
-                    status: 'received',
-                });
+                let randomAnswer = Math.floor(Math.random() * this.randomAnswers.length);
+                this.buildMessage(this.randomAnswers[randomAnswer], 'received');
             }, 1000)
+        },
+        buildMessage(message, status) {
+            this.usersList[this.activeIndex].messages.push({
+                date: new Date().toLocaleString("en-EN"),
+                message: message, 
+                status: status,
+            });
         },
         filterList() {
             return this.usersList.filter(user => {
