@@ -208,3 +208,5 @@ const app = new Vue ({
         },
     }, 
 })
+
+// - aggiungere le emoticons, tramite l'utilizzo di una libreria
