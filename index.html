@@ -52,13 +52,13 @@
                     <div class="search-name">
                         <div class="input_search">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <input v-model="searchName" type="text" name="search_name" id="search_name" placeholder="Cerca o inizia una nuova chat">
+                            <input v-model="searchName" @keyup="filteredList" type="text" name="search_name" id="search_name" placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-left_bottom">
-                    <div v-for="(users, index) in filterList()"  @click="activeIndex = index" class="received-msg">
+                    <div v-for="(users, index) in usersList" :class="{ writing: users.visible == false }"  @click="activeIndex = index" class="received-msg">
                         <div class="circle"><img class="img_users" :src="'img/' + users.img" :alt="users.name"></div>
                         <div class="received-msg_text">
                             <div class="name">{{ users.name }}</div>
@@ -103,8 +103,8 @@
                 <div class="col-right_bottom">
                     <button class="btn-tools"><i class="fa-regular fa-face-smile"></i></button>
                     <input @keyup.enter="sendMessage" v-model="newMessage" type="text" name="write-msg" id="write-msg" placeholder="Scrivi un messaggio">
-                        <button @click="sendMessage" v-model="newMessage" v-if="newMessage.trim()" :class="newMessage.trim() == '' ? 'writing' : 'no-text' " class="btn-tools"><i class="fa-solid fa-paper-plane"></i></button>
-                        <button v-model="newMessage" v-else="newMessage.trim() != '' ? 'no-text' : 'writing' " class="btn-tools"><i class="fa-solid fa-microphone"></i></button>
+                    <button @click="sendMessage" v-if="newMessage.trim()" :class="newMessage.trim() == '' ? 'writing' : 'no-text' " class="btn-tools"><i class="fa-solid fa-paper-plane"></i></button>
+                    <button v-else="newMessage.trim() != '' ? 'no-text' : 'writing' " class="btn-tools"><i class="fa-solid fa-microphone"></i></button>
                 </div>
                 
             </div>
@@ -113,7 +113,7 @@
     
     <!-- link vue js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
+    
     <!-- link js -->
     <script src="js/script.js"></script>
 </body>

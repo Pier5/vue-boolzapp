@@ -15,6 +15,7 @@ const app = new Vue ({
                 img: 'avatar_1.jpg',
                 access: 'Ultimo accesso oggi alle',
                 time: '12:00',
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -38,6 +39,7 @@ const app = new Vue ({
                 img: 'avatar_2.jpg',
                 time: '13:00',
                 access: 'Ultimo accesso oggi alle',
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 13:41:09',
@@ -56,6 +58,7 @@ const app = new Vue ({
                 img: 'avatar_3.jpg',
                 time: '22:00',
                 access: 'Ultimo accesso oggi alle',
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 08:12:55',
@@ -79,6 +82,7 @@ const app = new Vue ({
                 img: 'avatar_4.jpg',
                 time: '00:00',
                 access: 'Ultimo accesso oggi alle',
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 10:00:21',
@@ -92,6 +96,7 @@ const app = new Vue ({
                 img: 'avatar_5.jpg',
                 time: '01:00',
                 access: 'Ultimo accesso oggi alle',
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 11:30:55',
@@ -110,6 +115,7 @@ const app = new Vue ({
                 img: 'avatar_6.jpg',
                 time: '10:10',
                 access: 'Ultimo accesso oggi alle',
+                visible: true,
                 messages: [
                     {
                         date: '9/01/2020 11:30:55',
@@ -128,6 +134,7 @@ const app = new Vue ({
                 img: 'avatar_7.jpg',
                 time: '17:23',
                 access: 'Ultimo accesso oggi alle',
+                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 21:30:55',
@@ -189,11 +196,6 @@ const app = new Vue ({
             });
             this.scrollToBottom();
         },
-        filterList() {
-            return this.usersList.filter(user => {
-                return user.name.toLowerCase().includes(this.searchName.toLowerCase())
-            })
-        },
         deleteMessage(index) {
             this.usersList[this.activeIndex].messages.splice(index, 1);
         },
@@ -204,6 +206,15 @@ const app = new Vue ({
             setTimeout( () => {
                 document.querySelector('.col-right_main').scrollTop = document.querySelector('.col-right_main').scrollHeight;
             }, 10)
+        },
+        filteredList() {
+            this.usersList.forEach(user => {
+                if(user.name.toLowerCase().includes(this.searchName.toLowerCase())) {
+                    user.visible = true;
+                } else {
+                    user.visible = false;
+                }
+            });
         },
     }, 
 })
