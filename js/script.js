@@ -148,7 +148,7 @@ const app = new Vue ({
                 ],
             },
         ],
-        randomAnswers: [
+        randomQuotes: [
             'Non posso',
             'Ho il covid!!',
             'Stasera alle 22',
@@ -178,8 +178,8 @@ const app = new Vue ({
         },
         messageAnswer(){
             setTimeout( () => {
-                let randomAnswer = Math.floor(Math.random() * this.randomAnswers.length);
-                this.buildMessage(this.randomAnswers[randomAnswer], 'received');
+                let randomAnswer = Math.floor(Math.random() * this.randomQuotes.length);
+                this.buildMessage(this.randomQuotes[randomAnswer], 'received');
             }, 1000)
         },
         buildMessage(message, status) {
@@ -188,6 +188,7 @@ const app = new Vue ({
                 message: message, 
                 status: status,
             });
+            this.scrollToBottom();
         },
         filterList() {
             return this.usersList.filter(user => {
@@ -200,13 +201,10 @@ const app = new Vue ({
         getLastMsg(index) {    
             return this.usersList[index].messages.slice().reverse(); 
         },
+        scrollToBottom() {
+            setTimeout( () => {
+                document.querySelector('.col-right_main').scrollTop = document.querySelector('.col-right_main').scrollHeight;
+            }, 10)
+        },
     }, 
-    
 })
-
-
-
-// - predisporre una lista di frasi e/o citazioni da utilizzare al posto della 
-// risposta "ok:" quando il pc risponde, anziché scrivere "ok", scegliere una 
-// frase random dalla lista e utilizzarla come testo del messaggio di risposta 
-// del pc
