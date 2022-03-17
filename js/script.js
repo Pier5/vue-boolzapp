@@ -5,6 +5,10 @@ const app = new Vue ({
         searchName: '',
         newMessage: '',
         activeIndex: 0,
+        mainUser: [{
+            name: 'Pier',
+            img: 'avatar_8.jpg',
+        }],
         usersList: [
             {
                 name: 'Michele',
@@ -144,6 +148,17 @@ const app = new Vue ({
                 ],
             },
         ],
+        randomQuotes: [
+            'Non posso',
+            'Ho il covid!!',
+            'Stasera alle 22',
+            'Ho preso le birre..',
+            'Penso domani',
+            'Non importa se vinci di un pollice o di un miglio, vincere è vincere',
+            'Sai che questa non è una gara di 10 secondi. “Non ho altro che tempo.',
+            'Non giri le spalle alla famiglia, anche quando sono loro a farlo.',
+            'Vivo la mia vita un quarto di miglio alla volta.',
+        ],
         
     },
     methods: {
@@ -156,22 +171,24 @@ const app = new Vue ({
         },
         sendMessage() {
             if(this.newMessage.trim() != '') {
-                this.buildMessage(this.newMessage, 'sent');
+                this.usersList[this.activeIndex].messages.push({
+                    date: new Date().toLocaleString("en-EN"),
+                    message: this.newMessage, 
+                    status: 'sent',
+                });
                 this.newMessage = '';
                 this.messageAnswer();
             }
         },
         messageAnswer(){
             setTimeout( () => {
-                this.buildMessage('ok!!', 'received');
+                let randomAnswer = Math.floor(Math.random() * this.randomQuotes.length);
+                this.usersList[this.activeIndex].messages.push({
+                    date: new Date().toLocaleString("en-EN"),
+                    message: this.randomQuotes[randomAnswer], 
+                    status: 'received',
+                });
             }, 1000)
-        },
-        buildMessage(message, status) {
-            this.usersList[this.activeIndex].messages.push({
-                date: new Date().toLocaleString("en-EN"),
-                message: message, 
-                status: status,
-            });
         },
         filterList() {
             return this.usersList.filter(user => {
@@ -181,9 +198,16 @@ const app = new Vue ({
         deleteMessage(index) {
             this.usersList[this.activeIndex].messages.splice(index, 1);
         },
-        getLastMsg(index) {          
-            return this.usersList[index].messages.slice().reverse();  
-        } 
+        getLastMsg(index) {    
+            return this.usersList[index].messages.slice().reverse(); 
+        },
     }, 
     
 })
+
+
+
+// - predisporre una lista di frasi e/o citazioni da utilizzare al posto della 
+// risposta "ok:" quando il pc risponde, anziché scrivere "ok", scegliere una 
+// frase random dalla lista e utilizzarla come testo del messaggio di risposta 
+// del pc
