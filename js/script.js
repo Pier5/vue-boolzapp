@@ -15,7 +15,6 @@ const app = new Vue ({
                 img: 'avatar_1.jpg',
                 access: 'Ultimo accesso oggi alle',
                 time: '12:00',
-                visible: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -37,7 +36,7 @@ const app = new Vue ({
             {
                 name: 'Fabio',
                 img: 'avatar_2.jpg',
-                time: '12:00',
+                time: '13:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
                     {
@@ -55,7 +54,7 @@ const app = new Vue ({
             {
                 name: 'Samuele',
                 img: 'avatar_3.jpg',
-                time: '12:00',
+                time: '22:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
                     {
@@ -78,7 +77,7 @@ const app = new Vue ({
             {
                 name: 'Alessandro B.',
                 img: 'avatar_4.jpg',
-                time: '12:00',
+                time: '00:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
                     {
@@ -91,7 +90,7 @@ const app = new Vue ({
             {
                 name: 'Alessandro L.',
                 img: 'avatar_5.jpg',
-                time: '12:00',
+                time: '01:00',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
                     {
@@ -109,7 +108,7 @@ const app = new Vue ({
             {
                 name: 'Claudia',
                 img: 'avatar_6.jpg',
-                time: '12:00',
+                time: '10:10',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
                     {
@@ -127,7 +126,7 @@ const app = new Vue ({
             {
                 name: 'Federico',
                 img: 'avatar_7.jpg',
-                time: '12:00',
+                time: '17:23',
                 access: 'Ultimo accesso oggi alle',
                 messages: [
                     {
@@ -198,7 +197,7 @@ const app = new Vue ({
         deleteMessage(index) {
             this.usersList[this.activeIndex].messages.splice(index, 1);
         },
-        getLastMsg(index) {    
+        getLastMsg(index) { 
             return this.usersList[index].messages.slice().reverse(); 
         },
         scrollToBottom() {
@@ -208,5 +207,3 @@ const app = new Vue ({
         },
     }, 
 })
-
-// - aggiungere le emoticons, tramite l'utilizzo di una libreria

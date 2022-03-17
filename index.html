@@ -27,12 +27,11 @@
             <!-- colonna di sinistra con i vari contatti -->
             <div class="col-left">
                 
-                
                 <div class="col-left_top">
                     
                     <div v-for="user in mainUser" class="user">
                         <div class="info-user">
-                            <div class="circle-main"><img class="img_users" :src="'img/' + user.img" alt=""></div>
+                            <div class="circle-main"><img class="img_users" :src="'img/' + user.img" :alt="user.name"></div>
                         </div>
                         <div class="name name_main">{{ user.name }}</div>
                         <div class="tools">
@@ -59,8 +58,8 @@
                 </div>
                 
                 <div class="col-left_bottom">
-                    <div v-for="(users, index) in filterList().sort()"  @click="activeIndex = index" class="received-msg">
-                        <div class="circle"><img class="img_users" :src="'img/' + users.img" alt=""></div>
+                    <div v-for="(users, index) in filterList()"  @click="activeIndex = index" class="received-msg">
+                        <div class="circle"><img class="img_users" :src="'img/' + users.img" :alt="users.name"></div>
                         <div class="received-msg_text">
                             <div class="name">{{ users.name }}</div>
                             <div class="info-text">{{ getLastMsg(index)[0].message }}</div>
@@ -74,7 +73,7 @@
             <!-- colonna di destra con la schermata dei messaggi -->
             <div class="col-right">
                 <div class="col-right_top">
-                    <div class="circle-main circle_main_top"><img class="img_users" :src="'img/' + usersList[activeIndex].img" alt=""></div>
+                    <div class="circle-main circle_main_top"><img class="img_users" :src="'img/' + usersList[activeIndex].img" :alt="usersList[activeIndex].name"></div>
                     <div class="received-msg_text">
                         <div class="name">{{ usersList[activeIndex].name }}</div>
                         <div class="info-text">{{ `${usersList[activeIndex].access} ${usersList[activeIndex].time}` }}</div>
@@ -104,7 +103,8 @@
                 <div class="col-right_bottom">
                     <button class="btn-tools"><i class="fa-regular fa-face-smile"></i></button>
                     <input @keyup.enter="sendMessage" v-model="newMessage" type="text" name="write-msg" id="write-msg" placeholder="Scrivi un messaggio">
-                    <button class="btn-tools"><i class="fa-solid fa-microphone"></i></button>
+                        <button @click="sendMessage" v-model="newMessage" v-if="newMessage.trim()" :class="newMessage.trim() == '' ? 'writing' : 'no-text' " class="btn-tools"><i class="fa-solid fa-paper-plane"></i></button>
+                        <button v-model="newMessage" v-else="newMessage.trim() != '' ? 'no-text' : 'writing' " class="btn-tools"><i class="fa-solid fa-microphone"></i></button>
                 </div>
                 
             </div>
@@ -113,6 +113,7 @@
     
     <!-- link vue js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
     <!-- link js -->
     <script src="js/script.js"></script>
 </body>
