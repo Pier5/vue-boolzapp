@@ -78,7 +78,7 @@
                     <div class="circle-main circle_main_top"><img class="img_users" :src="'img/' + usersList[activeIndex].img" :alt="usersList[activeIndex].name"></div>
                     <div class="received-msg_text">
                         <div class="name">{{ usersList[activeIndex].name }}</div>
-                        <div class="info-text">{{ `${usersList[activeIndex].access} ${usersList[activeIndex].time}` }}</div>
+                        <div class="info-text">{{ userStatus ? userStatus : `${usersList[activeIndex].access} ${usersList[activeIndex].time}` }}</div>
                     </div>
                     <div class="tools">
                         <button class="btn-tools"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -88,7 +88,6 @@
                 </div>
                 
                 <div class="col-right_main">
-                    
                     <div v-for="(message, index) in getUser().messages" :class="message.status == 'sent' ? 'msg-send content-msg' : 'msg-received content-msg'" class="msg-box" >{{ message.message }}
                         <div class="msg-hour">{{ getTime(message) }}</div>
                         <div class="dropdown-menu">

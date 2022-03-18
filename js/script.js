@@ -2,6 +2,7 @@ const app = new Vue ({
     el: '#app',
     data: {
         
+        userStatus: '',
         searchName: '',
         newMessage: '',
         activeIndex: 0,
@@ -186,7 +187,8 @@ const app = new Vue ({
             setTimeout( () => {
                 let randomAnswer = Math.floor(Math.random() * this.randomQuotes.length);
                 this.buildMessage(this.randomQuotes[randomAnswer], 'received');
-            }, 1000)
+            }, 3000);
+            this.userStatus = "Sta scrivendo....";
         },
         buildMessage(message, status) {
             this.usersList[this.activeIndex].messages.push({
@@ -195,6 +197,7 @@ const app = new Vue ({
                 status: status,
             });
             this.scrollToBottom();
+            this.userStatus = '';
         },
         deleteMessage(index) {
             this.usersList[this.activeIndex].messages.splice(index, 1);
