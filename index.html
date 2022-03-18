@@ -83,7 +83,13 @@
                     <div class="tools">
                         <button class="btn-tools"><i class="fa-solid fa-magnifying-glass"></i></button>
                         <button class="btn-tools"><i class="fa-solid fa-paperclip"></i></button>
-                        <button class="btn-tools"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <button class="btn-tools">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <div class="dropdown-items">
+                                <a class="item-menu" href="#"><span class="menu-text">Elimina chat</span></a>
+                                <a @click="deleteAllMessages" class="item-menu" href="#"><span class="menu-text">Elimina messaggi</span></a>
+                            </div>
+                        </button>
                     </div>
                 </div>
                 

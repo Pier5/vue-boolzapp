@@ -185,13 +185,19 @@ const app = new Vue ({
         },
         messageAnswer(){
             setTimeout( () => {
+                this.userStatus = "Sta scrivendo....";
+            }, 2000);
+            setTimeout( () => {
                 let randomAnswer = Math.floor(Math.random() * this.randomQuotes.length);
                 this.buildMessage(this.randomQuotes[randomAnswer], 'received');
-            }, 3000);
-            this.userStatus = "Sta scrivendo....";
+
+            }, 4000);
+            setTimeout( () => {
+                this.userStatus = "Online";
+            }, 4000);
             setTimeout( () => {
                 this.userStatus = '';
-            }, 5000);
+            }, 7000);
         },
         buildMessage(message, status) {
             this.usersList[this.activeIndex].messages.push({
@@ -200,7 +206,6 @@ const app = new Vue ({
                 status: status,
             });
             this.scrollToBottom();
-            this.userStatus = "Online";
         },
         deleteMessage(index) {
             this.usersList[this.activeIndex].messages.splice(index, 1);
@@ -221,6 +226,9 @@ const app = new Vue ({
                     user.visible = false;
                 }
             });
+        },
+        deleteAllMessages() {
+            this.usersList[this.activeIndex].messages.splice(0);
         },
     }, 
 })
