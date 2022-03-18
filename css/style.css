@@ -77,6 +77,17 @@ body {
     align-items: center;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
+.tools-shadow {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 .fa-circle-notch,
 .fa-message,
 .fa-ellipsis-vertical,
@@ -326,3 +337,4 @@ body {
 .btn-tools:focus-within .dropdown-items {
     display: block;
 }
+

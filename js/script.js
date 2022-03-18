@@ -226,5 +226,9 @@ const app = new Vue ({
         deleteAllMessages() {
             this.usersList[this.activeIndex].messages.splice(0);
         },
+        deleteChat() {
+            this.usersList[this.activeIndex].visible = false;
+            this.deleteAllMessages();
+        },
     }, 
 })

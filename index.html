@@ -74,9 +74,9 @@
             
             <!-- colonna di destra con la schermata dei messaggi -->
             <div class="col-right">
-                <div class="col-right_top">
-                    <div class="circle-main circle_main_top"><img class="img_users" :src="'img/' + usersList[activeIndex].img" :alt="usersList[activeIndex].name"></div>
-                    <div class="received-msg_text">
+                <div v-for="(user, index) in usersList" v-show="activeIndex == index" class="col-right_top">
+                    <div :class="{ hidden: user.visible == false }" class="circle-main circle_main_top"><img class="img_users" :src="'img/' + usersList[activeIndex].img" :alt="usersList[activeIndex].name"></div>
+                    <div :class="{ hidden: user.visible == false }" class="received-msg_text">
                         <div class="name">{{ usersList[activeIndex].name }}</div>
                         <div class="info-text">{{ userStatus != '' ? userStatus : `${usersList[activeIndex].access} ${usersList[activeIndex].time}` }}</div>
                     </div>
@@ -86,7 +86,7 @@
                         <button class="btn-tools">
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                             <div class="dropdown-items">
-                                <a class="item-menu" href="#"><span class="menu-text">Elimina chat</span></a>
+                                <a @click="deleteChat" class="item-menu" href="#"><span class="menu-text">Elimina chat</span></a>
                                 <a @click="deleteAllMessages" class="item-menu" href="#"><span class="menu-text">Elimina messaggi</span></a>
                             </div>
                         </button>
