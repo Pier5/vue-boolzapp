@@ -162,11 +162,10 @@ const app = new Vue ({
             'Ho preso le birre..',
             'Penso domani',
             'Non importa se vinci di un pollice o di un miglio, vincere è vincere',
-            'Sai che questa non è una gara di 10 secondi. “Non ho altro che tempo.',
+            'Sai che questa non è una gara di 10 secondi. Non ho altro che tempo.',
             'Non giri le spalle alla famiglia, anche quando sono loro a farlo.',
             'Vivo la mia vita un quarto di miglio alla volta.',
-        ]
-        
+        ],
     },
     methods: {
         getUser() {
@@ -190,9 +189,6 @@ const app = new Vue ({
             setTimeout( () => {
                 let randomAnswer = Math.floor(Math.random() * this.randomQuotes.length);
                 this.buildMessage(this.randomQuotes[randomAnswer], 'received');
-
-            }, 4000);
-            setTimeout( () => {
                 this.userStatus = "Online";
             }, 4000);
             setTimeout( () => {
