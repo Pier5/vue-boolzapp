@@ -62,9 +62,11 @@
                         <div class="circle"><img class="img_users" :src="'img/' + users.img" :alt="users.name"></div>
                         <div class="received-msg_text">
                             <div class="name">{{ users.name }}</div>
-                            <div class="info-text">{{ getLastMsg(index)[0].message }}</div>
+                            <div v-if="users.messages != '' " class="info-text">{{ getLastMsg(index)[0].message }}</div>
+                            <div v-else="users.messages == ''" class="info-text"></div>
                         </div>
-                        <div class="hour-text">{{ getLastMsg(index)[0].date }}</div>
+                        <div v-if="users.messages != '' " class="hour-text">{{ getLastMsg(index)[0].date }}</div>
+                        <div v-else="users.messages == ''" class="hour-text"></div>
                     </div>
                 </div>
                 
